@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="West Garden לבר מצווה">
+<meta property="og:image" content="https://rzsultan-boop.github.io/west-garden-1610/img/hero.jpg">
+<meta property="og:description" content="סיכום הפגישה: מחירים, מחשבון שדרוגים, תפריט ותמונות">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>West Garden לבר מצווה</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@400;600;700&display=swap">
+<style>
+/* Layout: a single RTL column like a venue proposal folder — leafy photo band on top, then sections, a working cost calculator in the middle, a filterable gallery near the end. */
+:root{
+  --bg:#f2f4ee; --surface:#ffffff; --ink:#17201a; --muted:#5d6a60; --line:#d9dfd3;
+  --leaf:#3f6b3a; --leaf-soft:#e3ecdc; --wood:#9a6532; --wood-soft:#f3e7d9; --night:#1d2a22;
+  --on-leaf:#ffffff;
+  --display:"Frank Ruhl Libre", "David", "Times New Roman", serif;
+  --body:"Assistant", "Arial Hebrew", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#121814; --surface:#1a221d; --ink:#e8ede4; --muted:#9fac9f; --line:#2c3830;
+  --leaf:#8cc07f; --leaf-soft:#22321f; --wood:#d9a36b; --wood-soft:#2d2318; --night:#0c110e; --on-leaf:#0f1a10; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#121814; --surface:#1a221d; --ink:#e8ede4; --muted:#9fac9f; --line:#2c3830;
+  --leaf:#8cc07f; --leaf-soft:#22321f; --wood:#d9a36b; --wood-soft:#2d2318; --night:#0c110e; --on-leaf:#0f1a10; color-scheme:dark }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;direction:rtl}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.6rem,3.2vw,2.2rem);font-weight:700}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+.label{font-size:.78rem;letter-spacing:.06em;color:var(--muted);font-weight:600}
+
+/* hero */
+.hero{position:relative;color:#fff;background:var(--night)}
+.hero img{width:100%;height:clamp(260px,46vw,460px);object-fit:cover;display:block;opacity:.72}
+.hero .over{position:absolute;inset:auto 0 0 0;background:linear-gradient(to top,rgba(10,16,12,.92),rgba(10,16,12,0))}
+.hero .over .wrap{padding-block:28px 26px;display:grid;gap:8px}
+.hero h1{font-size:clamp(2rem,5.4vw,3.4rem);font-weight:900;color:#fff}
+.hero .sub{font-size:1.05rem;color:#e4eadf;max-width:60ch}
+.hero .meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.92rem;color:#cdd8c8}
+
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
+nav.toc a{white-space:nowrap;color:var(--ink);text-decoration:none;font-weight:600;font-size:.92rem;padding:6px 12px;border-radius:999px}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--leaf-soft);outline:none}
+
+section{padding-block:44px}
+section + section{border-top:1px solid var(--line)}
+.head{display:grid;gap:6px;margin-bottom:22px}
+.head p{color:var(--muted);max-width:65ch}
+
+/* key price strip */
+.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.price{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:grid;gap:2px}
+.price b{font-family:var(--display);font-size:2rem;font-weight:900;color:var(--leaf);line-height:1.1}
+.price span{color:var(--muted);font-size:.95rem}
+.cashnote{margin-top:14px;background:var(--wood-soft);border-radius:10px;padding:14px 18px;display:grid;gap:4px}
+.cashnote strong{color:var(--wood)}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+ul.clean{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+ul.clean li{padding-right:18px;position:relative}
+ul.clean li::before{content:"";position:absolute;right:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--leaf)}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:820px){.calc{grid-template-columns:1fr}}
+.opt{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:12px}
+.opts{display:grid;gap:14px}
+.opt-top{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.opt-top .t{display:grid;gap:2px;min-width:0}
+.opt-top .p{font-weight:700;color:var(--leaf);white-space:nowrap}
+.opt.on{border-color:var(--leaf);box-shadow:0 0 0 1px var(--leaf) inset}
+.switch{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;user-select:none}
+.switch input{appearance:none;width:42px;height:24px;border-radius:999px;background:var(--line);position:relative;cursor:pointer;margin:0;flex:none;transition:background .15s}
+.switch input::after{content:"";position:absolute;top:3px;right:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:right .15s}
+.switch input:checked{background:var(--leaf)}
+.switch input:checked::after{right:21px}
+.switch input:focus-visible{outline:2px solid var(--wood);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:6px 12px;font:inherit;font-size:.92rem;cursor:pointer;text-align:right}
+.chip small{color:var(--muted);display:block;font-size:.78rem}
+.chip[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--on-leaf)}
+.chip[aria-pressed="true"] small{color:inherit;opacity:.85}
+.chip:focus-visible{outline:2px solid var(--wood);outline-offset:2px}
+.hint{font-size:.88rem;color:var(--muted)}
+.games{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:520px){.games{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.game{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 8px;display:grid;justify-items:center;gap:6px;cursor:pointer;font:inherit;color:var(--ink)}
+.game svg{width:64px;height:48px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.game[aria-pressed="true"]{border-color:var(--leaf);background:var(--leaf-soft)}
+.game[aria-pressed="true"] span::after{content:" ✓";color:var(--leaf);font-weight:700}
+.game:focus-visible{outline:2px solid var(--wood);outline-offset:2px}
+.inputs{display:flex;flex-wrap:wrap;gap:12px}
+.inputs label{display:grid;gap:4px;font-weight:600;font-size:.92rem}
+.inputs input{width:110px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-variant-numeric:tabular-nums}
+.inputs input:focus-visible{outline:2px solid var(--leaf);outline-offset:1px}
+.total{position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);background:var(--night);color:#eef3ea;border-radius:12px;padding:20px;display:grid;gap:10px}
+.total h3{color:#fff}
+.row{display:flex;justify-content:space-between;gap:12px;font-size:.95rem}
+.row span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.row.dim{color:#a9b8a6}
+.sum{border-top:1px solid #3a4a3f;padding-top:10px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.sum b{font-family:var(--display);font-size:2.1rem;font-weight:900;color:#a8d49a;font-variant-numeric:tabular-nums}
+.total .fine{font-size:.82rem;color:#a9b8a6}
+.unknown{display:grid;gap:8px}
+.unknown .u{display:flex;justify-content:space-between;gap:12px;border-top:1px dashed var(--line);padding-top:8px}
+.unknown .u span:last-child{color:var(--muted);white-space:nowrap}
+
+/* menu */
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.menu h3{color:var(--wood);margin-bottom:8px}
+.menu li{font-size:.97rem}
+
+/* seating */
+.seat{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.seat div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:4px}
+.seat b{font-family:var(--display);font-size:1.9rem;color:var(--leaf);line-height:1}
+
+/* gallery */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.gal{columns:3 260px;column-gap:12px}
+.gal figure{break-inside:avoid;margin:0 0 12px;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.gal button{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.gal img{display:block;width:100%;height:auto}
+.gal figcaption{padding:8px 12px 10px;font-size:.88rem;display:grid;gap:2px}
+.gal figcaption .src{color:var(--muted);font-size:.78rem}
+.tag-w{display:inline-block;background:var(--night);color:#d7e6d0;border-radius:4px;padding:0 6px;font-size:.72rem;margin-left:6px}
+.lb{position:fixed;inset:0;z-index:20;background:rgba(8,12,9,.92);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:82vh;border-radius:6px}
+.lb p{color:#e6ede2;margin-top:10px;text-align:center}
+.lb button{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);left:calc(env(safe-area-inset-left,0px) + 12px);background:#fff;color:#111;border:0;border-radius:999px;width:40px;height:40px;font-size:1.2rem;cursor:pointer}
+
+/* todo */
+.check{display:grid;gap:8px}
+.check li{display:flex;gap:10px;align-items:flex-start}
+.check .box{flex:none;width:20px;height:20px;border-radius:5px;border:2px solid var(--line);margin-top:3px;display:grid;place-items:center;font-size:.8rem}
+.check .done .box{background:var(--leaf);border-color:var(--leaf);color:var(--on-leaf)}
+ol.dec{margin:0;padding-right:20px;display:grid;gap:8px}
+footer{padding-block:28px 40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+a{color:var(--leaf)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="img/hero.jpg" alt="החלל הפנימי של West Garden עם תקרת צמחייה, שולחנות עגולים מעץ ובר">
+  <div class="over"><div class="wrap">
+    <span class="label" style="color:#bcd3b2">סיכום סיור ופגישה · 16.10.2026</span>
+    <h1>West Garden לבר מצווה</h1>
+    <p class="sub">מתחם אירועים בוטיק ברעננה, בסגנון בר יין עם חצר ירוקה. מתאים לאירוע של 50–60 אורחים בהושבה סביב שולחנות.</p>
+    <div class="meta"><span>רועי ונעמה עם מנהל המקום</span><span>ליד חניון מרטין דרוקר והאמפי</span><span>אינסטגרם: <a href="https://www.instagram.com/west_garden273/" style="color:#cfe6c4">@west_garden273</a></span></div>
+  </div></div>
+</header>
+
+<nav class="toc" aria-label="ניווט בעמוד"><div class="wrap">
+  <a href="#price">מחיר</a><a href="#calc">שדרוגים ומחשבון</a><a href="#menu">תפריט</a><a href="#venue">המקום</a><a href="#gallery">תמונות</a><a href="#next">מה הלאה</a>
+</div></nav>
+
+<main>
+<section id="price"><div class="wrap">
+  <div class="head"><h2>המחיר</h2><p>כפי שהמנהל כתב ביד בפגישה. כולל מע"מ, ולדבריו "אין פה אותיות קטנות".</p></div>
+  <div class="prices">
+    <div class="price"><span class="label">מבוגר</span><b class="num">320 ₪</b><span>מינימום 50 מבוגרים</span></div>
+    <div class="price"><span class="label">ילד עד גיל 11</span><b class="num">150 ₪</b><span>שניצלונים וצ'יפס</span></div>
+    <div class="price"><span class="label">בסיס ל-50 מבוגרים</span><b class="num">16,000 ₪</b><span>320 × 50, כולל מע"מ</span></div>
+  </div>
+  <div class="cashnote">
+    <p><strong>4,000 ₪ מתוך ה-16,000 במזומן</strong>, וזה שכר צוות הקייטרינג (עובדי קבלן). את 12,000 ₪ הנותרים משלמים באשראי או בהעברה.</p>
+    <p><strong>טיפ למלצרים לא כלול.</strong> הוא בנפרד, לפי שיקול דעתכם.</p>
+  </div>
+  <div class="cols" style="margin-top:28px">
+    <div><h3 style="margin-bottom:10px">כלול במחיר</h3>
+      <ul class="clean">
+        <li>התפריט הבשרי החגיגי</li>
+        <li>שתייה קלה וחמה, 2 סוגי יין (אדום ולבן), קאווה ובירה, במזיגה לכוסות</li>
+        <li>הגברה, תאורה, מסך ומקרן שיורדים מהתקרה, ומיקרופון אלחוטי לברכות</li>
+        <li>צוות, מלצרים ומנהל אירוע</li>
+        <li>עריכת שולחן: עץ חשוף, כלים, כוסות, ומרכזי שולחן של עשבי תבלין</li>
+      </ul></div>
+    <div><h3 style="margin-bottom:10px">טוב לדעת</h3>
+      <ul class="clean">
+        <li>ילדים בני 12–13 נספרים כמבוגרים. מי שאוכל כמו ילד אפשר לתמחר כמנת ילד, מספיק להגיד.</li>
+        <li>יש אופציה של בשרי כשר או חלבי כשר (קייטרינג חיצוני, "שף עם הבית").</li>
+        <li>אפשר להביא ספקים מבחוץ, אבל הוא ממליץ על שלהם.</li>
+        <li>את השדרוגים אפשר רק להוסיף. אי אפשר להחליף בהם מנה מהבסיס.</li>
+      </ul></div>
+  </div>
+</div></section>
+
+<section id="calc"><div class="wrap">
+  <div class="head"><h2>שדרוגים ומחשבון</h2><p>סמנו מה מעניין אתכם וראו את הסכום. המחירים לקוחים מדף השדרוגים של המקום ומהפגישה. החישוב שלנו, לא הצעת מחיר רשמית.</p></div>
+  <div class="calc">
+    <div class="opts">
+      <div class="opt">
+        <h3>כמה אורחים</h3>
+        <div class="inputs">
+          <label for="adults">מבוגרים (כולל 12+)<input id="adults" type="number" min="0" max="200" value="50" inputmode="numeric"></label>
+          <label for="kids">ילדים עד גיל 11<input id="kids" type="number" min="0" max="100" value="10" inputmode="numeric"></label>
+        </div>
+        <p class="hint">מתחת ל-50 מבוגרים משלמים על 50. בפנים יש מקום ל-60 אורחים, ועם החצר אפשר יותר.</p>
+      </div>
+
+      <div class="opt" id="o-rec">
+        <div class="opt-top"><div class="t"><h3>קבלת פנים</h3><span class="hint">בוחרים 3 מתוך 8, מוגש בזמן שהאורחים מגיעים</span></div><span class="p num">35 ₪ לאדם</span></div>
+        <label class="switch"><input type="checkbox" id="rec"> להוסיף לחישוב</label>
+        <div class="chips" id="recChips" role="group" aria-label="מנות קבלת פנים">
+          <button class="chip" type="button" aria-pressed="false">טאבון פוקאצ'ות<small>לחמעג'ון, פיצות טבעוניות, ממרחים</small></button>
+          <button class="chip" type="button" aria-pressed="false">שווארמה פרגית<small>במיני פיתה, עמבה וטחינה</small></button>
+          <button class="chip" type="button" aria-pressed="false">מיני קבב<small>תפוח אדמה מדורה, בצל סומק</small></button>
+          <button class="chip" type="button" aria-pressed="false">פיש אנד צ'יפס<small>איולי אריסה, איולי שומשום</small></button>
+          <button class="chip" type="button" aria-pressed="false">מיני עראיס<small>בעבודת יד, טחינה</small></button>
+          <button class="chip" type="button" aria-pressed="false">פאני פורי<small>סביצ'ה דג ים או סלמון</small></button>
+          <button class="chip" type="button" aria-pressed="false">סיגר אסאדו / סיגר דג<small>אסאדו מפורק</small></button>
+          <button class="chip" type="button" aria-pressed="false">ברוסקטה<small>חציל שרוף, ריבת בצל</small></button>
+        </div>
+        <p class="hint" id="recHint">בחרתם 0 מתוך 3</p>
+      </div>
+
+      <div class="opt" id="o-meat">
+        <div class="opt-top"><div class="t"><h3>חגיגת נתחי קצבים של השף</h3><span class="hint">אנטריקוט, דנוור קאט, פיקניה</span></div><span class="p num">40 ₪ לאדם</span></div>
+        <label class="switch"><input type="checkbox" id="meat"> להוסיף לחישוב</label>
+      </div>
+
+      <div class="opt" id="o-games">
+        <div class="opt-top"><div class="t"><h3>שולחנות משחק</h3><span class="hint">3 שולחנות מתוך 4, בחצר המקורה</span></div><span class="p num">1,500 ₪ + מע"מ</span></div>
+        <label class="switch"><input type="checkbox" id="games"> להוסיף לחישוב</label>
+        <div class="games" id="gameBtns" role="group" aria-label="שולחנות משחק">
+          <button class="game" type="button" aria-pressed="false"><svg viewBox="0 0 64 48" aria-hidden="true"><rect x="6" y="14" width="52" height="24" rx="2"/><line x1="32" y1="10" x2="32" y2="42"/><circle cx="50" cy="9" r="3"/><path d="M10 40v5M54 40v5"/></svg><span>פינג-פונג</span></button>
+          <button class="game" type="button" aria-pressed="false"><svg viewBox="0 0 64 48" aria-hidden="true"><rect x="4" y="10" width="56" height="28" rx="4"/><rect x="9" y="15" width="46" height="18" rx="1"/><circle cx="26" cy="24" r="2.5"/><circle cx="31" cy="21" r="2.5"/><circle cx="31" cy="27" r="2.5"/><circle cx="44" cy="24" r="2.5"/><line x1="46" y1="30" x2="60" y2="44"/></svg><span>סנוקר</span></button>
+          <button class="game" type="button" aria-pressed="false"><svg viewBox="0 0 64 48" aria-hidden="true"><rect x="4" y="10" width="56" height="28" rx="6"/><line x1="32" y1="10" x2="32" y2="38"/><circle cx="32" cy="24" r="5"/><circle cx="16" cy="24" r="4"/><circle cx="16" cy="24" r="1.5"/><circle cx="46" cy="20" r="2"/></svg><span>הוקי אוויר</span></button>
+          <button class="game" type="button" aria-pressed="false"><svg viewBox="0 0 64 48" aria-hidden="true"><rect x="8" y="10" width="48" height="28" rx="2"/><line x1="2" y1="17" x2="62" y2="17"/><line x1="2" y1="24" x2="62" y2="24"/><line x1="2" y1="31" x2="62" y2="31"/><rect x="18" y="14" width="3" height="6"/><rect x="40" y="14" width="3" height="6"/><rect x="29" y="21" width="3" height="6"/><rect x="22" y="28" width="3" height="6"/><rect x="38" y="28" width="3" height="6"/></svg><span>כדורגל שולחן</span></button>
+        </div>
+        <p class="hint" id="gameHint">בחרתם 0 מתוך 3. בעמוד האינסטגרם שלהם מוצגות גם עמדות פלייסטיישן ומסכים (ראו בגלריה), אבל הן לא חלק מהחבילה הזו והמחיר שלהן לא נאמר.</p>
+      </div>
+
+      <div class="opt" id="o-tip">
+        <div class="opt-top"><div class="t"><h3>טיפ למלצרים</h3><span class="hint">לא כלול במחיר ולפי שיקול דעתכם. מחושב כאחוז מעלות המנה לאדם (320 ₪ למבוגר, 150 ₪ לילד)</span></div><span class="p num" id="tipPct">0%</span></div>
+        <input type="range" id="tip" min="0" max="20" step="1" value="0" aria-label="אחוז טיפ" style="width:100%;accent-color:var(--leaf)">
+        <div class="chips" role="group" aria-label="אחוזי טיפ מהירים">
+          <button class="chip" type="button" data-tip="0">0%</button><button class="chip" type="button" data-tip="5">5%</button><button class="chip" type="button" data-tip="8">8%</button><button class="chip" type="button" data-tip="10">10%</button><button class="chip" type="button" data-tip="12">12%</button><button class="chip" type="button" data-tip="15">15%</button>
+        </div>
+        <p class="hint" id="tipHint">בלי טיפ</p>
+      </div>
+
+      <div class="opt">
+        <h3>עוד אפשרויות (בלי מחיר עדיין)</h3>
+        <div class="unknown">
+          <div class="u"><span>צלם סטילס ומגנטים. מסתובב בין האורחים, ועושה גם הגדלות.</span><span>לבקש מחיר</span></div>
+          <div class="u"><span>עמדת צילום. האורחים מצטלמים ומדפיסים בעצמם. ההמלצה שלו: צלם או עמדה, לא שניהם.</span><span>לבקש מחיר</span></div>
+          <div class="u"><span>עיצוב שולחנות עם דנה: 16–18 עציצי תבלין או פרחים עונתיים, שהאורחים לוקחים הביתה.</span><span>לבקש מחיר</span></div>
+          <div class="u"><span>מפות. הם לא ממליצים, כי זה משנה את כל עיצוב השולחן.</span><span>—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="total" aria-live="polite">
+      <h3>הערכת עלות</h3>
+      <div class="row"><span id="lAdults">50 מבוגרים × 320</span><span id="vAdults">16,000 ₪</span></div>
+      <div class="row"><span id="lKids">10 ילדים × 150</span><span id="vKids">1,500 ₪</span></div>
+      <div class="row" id="rRec" hidden><span id="lRec">קבלת פנים</span><span id="vRec"></span></div>
+      <div class="row" id="rMeat" hidden><span id="lMeat">עמדת נתחים</span><span id="vMeat"></span></div>
+      <div class="row" id="rGames" hidden><span>שולחנות משחק (כולל מע"מ 18%)</span><span id="vGames">1,770 ₪</span></div>
+      <div class="row" id="rTip" hidden><span id="lTip">טיפ למלצרים</span><span id="vTip"></span></div>
+      <div class="sum"><span>סה"כ</span><b id="vTotal">17,500 ₪</b></div>
+      <div class="row dim"><span>מזה במזומן (לפי הדף, על בסיס 16,000)</span><span>4,000 ₪</span></div>
+      <p class="fine">הטיפ מוצג רק אם בחרתם אחוז. לא כולל צלם, עמדת צילום ועיצוב. בשדרוגים לפי אדם ספרנו רק מבוגרים, כי לא נאמר אם ילדים נספרים. לבקש אישור בכתב.</p>
+    </aside>
+  </div>
+</div></section>
+
+<section id="menu"><div class="wrap">
+  <div class="head"><h2>התפריט הבשרי החגיגי</h2><p>כלול במחיר. ההבדל מהתפריט "הקלאסי": שתי המנות הראשונות יוצאות כמנות מסתובבות, כמו קבלת פנים קטנה. לדבריו, הכמויות מספיקות ל-50 עד 70 איש.</p></div>
+  <div class="menu">
+    <div><h3>סלטים</h3><ul class="clean">
+      <li>פוקאצ'ות חמות ומטבלים</li><li>טאבולה</li><li>סלט עלים עם אגוזי מלך ופרי העונה</li><li>סלט שרי בצבעים, זיתי קלמטה וזעתר</li><li>סלט בטטה קריספית עם טחינה וסילאן</li><li>סלט חצילים</li><li>קרפצ'ו סלק</li></ul></div>
+    <div><h3>ראשונות (מסתובבות)</h3><ul class="clean">
+      <li>קרפצ'ו בקר, צ'ילי, שקדים קלויים ובלסמי</li><li>כבד אווז על ברוסקטה פריכה, ריבת בצל ואיולי חרדל</li></ul>
+      <h3 style="margin-top:18px">קינוחים</h3><ul class="clean"><li>קינוחי ביס ופירות העונה (בחורף יותר קינוחים)</li></ul></div>
+    <div><h3>עיקריות</h3><ul class="clean">
+      <li>אסאדו מפורק, תפוח אדמה מדורה ורוטב צלי</li><li>פרגית ים-תיכונית בבצל סגול וסומק, אורז מדורה</li><li>פילה לברק צרוב עם חגיגה ירוקה</li><li>לילדים: שניצלוני הבית וצ'יפס</li></ul></div>
+  </div>
+</div></section>
+
+<section id="venue"><div class="wrap">
+  <div class="head"><h2>המקום וההושבה</h2><p>מתחם שמארח רק אירועים, לא מסעדה. בפנים: תקרת צמחייה, שולחנות עץ ובר ארוך. בחוץ: חצר שבחורף מקבלת גזיבו סגור ותנורי חימום.</p></div>
+  <div class="seat">
+    <div><span class="label">החלל הסגור</span><b class="num">60</b><span>עד 60 אורחים בפנים, בהושבה ובבר</span></div>
+    <div><span class="label">"הפלור"</span><b class="num">48</b><span>4 שולחנות עגולים, אחד מהם של 6 או 8 ואחד של 10</span></div>
+    <div><span class="label">הבר</span><b class="num">10–12</b><span>מקומות מול המסך. מתאים לחברים של חתן בר המצווה</span></div>
+    <div><span class="label">החצר</span><b class="num">2–3</b><span>שולחנות עגולים נוספים או שולחנות משחק, בגזיבו עם תנורים</span></div>
+  </div>
+  <div class="cols" style="margin-top:24px">
+    <div><h3 style="margin-bottom:8px">מועד</h3><p>המנהל ממליץ מאוד על <b>שישי בצהריים</b>. מבחינתנו שישי בצהריים, אם כי "היה עדיף שבת".</p></div>
+    <div><h3 style="margin-bottom:8px">מצגת וברכות</h3><p>המסך יורד מול הבר והשולחנות, ואפשר להחשיך את החלל בתריסים בשביל מצגת.</p></div>
+    <div><h3 style="margin-bottom:8px">הגעה וחניה</h3><p>חניה חינם בחניון מרטין דרוקר, וגם כחול-לבן בסביבה. עמוס רק כשיש הופעה באמפי. הוא ישלח נקודת Waze לכניסה הראשית.</p></div>
+  </div>
+</div></section>
+
+<section id="gallery"><div class="wrap">
+  <div class="head"><h2>תמונות</h2><p>מהתמונות שהמנהל שלח לנעמה, מהסרטון של החצר, ומעמוד האינסטגרם של המקום. התגית <span class="tag-w">חורף</span> מסמנת תמונות מנובמבר עד ינואר.</p></div>
+  <div class="filters" role="group" aria-label="סינון תמונות">
+    <button class="chip" type="button" data-f="all" aria-pressed="true">הכול</button>
+    <button class="chip" type="button" data-f="winter" aria-pressed="false">בחורף</button>
+    <button class="chip" type="button" data-f="venue" aria-pressed="false">המקום</button>
+    <button class="chip" type="button" data-f="events" aria-pressed="false">אירועים ובר מצווה</button>
+    <button class="chip" type="button" data-f="food" aria-pressed="false">אוכל</button>
+  </div>
+  <div class="gal" id="gal"></div>
+</div></section>
+
+<section id="next"><div class="wrap">
+  <div class="cols">
+    <div><div class="head"><h2>מה קיבלנו ומה חסר</h2></div>
+      <ul class="clean check">
+        <li class="done"><span class="box">✓</span><span>דף התוספות והשדרוגים</span></li>
+        <li class="done"><span class="box">✓</span><span>סרטון החצר עם הגזיבו</span></li>
+        <li class="done"><span class="box">✓</span><span>תמונות מאירועים ועמוד האינסטגרם</span></li>
+        <li><span class="box"></span><span>הטלפון של דנה, המעצבת</span></li>
+        <li><span class="box"></span><span>תמונות של שולחנות עם מפות</span></li>
+        <li><span class="box"></span><span>נקודת Waze לחניה</span></li>
+        <li><span class="box"></span><span>הצעת מחיר מסודרת בכתב</span></li>
+      </ul></div>
+    <div><div class="head"><h2>להחליט</h2></div>
+      <ol class="dec">
+        <li>תאריך: שישי בצהריים או שבת, ולוודא שאין באותו יום הופעה באמפי</li>
+        <li>כמה מבוגרים וכמה ילדים, כולל בני 12–13 שאוכלים כמו ילדים</li>
+        <li>כולם בפנים, או חברים בחצר ליד המשחקים</li>
+        <li>אילו שדרוגים, ואילו 3 מנות ו-3 משחקים</li>
+        <li>צלם או עמדת צילום (לבקש מחירים)</li>
+        <li>עיצוב שולחנות: ברירת המחדל או דנה</li>
+        <li>האם צריך כשרות</li>
+      </ol></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">מבוסס על הקלטת הפגישה (16.10.2026), על הדף שהמנהל כתב ביד, על דף השדרוגים של המקום, ועל תמונות מהמקום ומ-<a href="https://www.instagram.com/west_garden273/">@west_garden273</a>. המחירים כפי שנמסרו בעל פה ובדפים. לפני סגירה צריך לקבל אותם בכתב.</div></footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="תמונה מוגדלת">
+  <button type="button" id="lbClose" aria-label="סגירה">✕</button>
+  <div><img id="lbImg" alt=""><p id="lbCap"></p></div>
+</div>
+
+<script>
+const PHOTOS=[
+ ["g-gazebo1","החצר בחורף: גזיבו לבן סגור עם חלונות","סרטון שהמנהל שלח, מהחורף שעבר",["winter","venue"]],
+ ["w-screen","מקרן ומסך בזמן אירוע, עם דיג'יי-סקסופוניסט","אינסטגרם, 7.12.2025",["winter","events"]],
+ ["v-table","שולחן עגול מעץ, בלי מפה, עם פרחים","תמונה שהמנהל שלח",["venue"]],
+ ["w-batmitzvah","קיר בלונים לבת מצווה בכניסה, בערב","אינסטגרם, 8.11.2025",["winter","events"]],
+ ["w-crowd","מסיבה מתחת לתקרת הצמחייה","אינסטגרם, 18.1.2026",["winter","events"]],
+ ["v-interior","הפלור עם השולחנות העגולים","תמונה שהמנהל שלח",["venue"]],
+ ["e-games","עמדות פלייסטיישן, הגה מרוצים ומסכים","אינסטגרם, 19.9.2025. לא חלק מחבילת השולחנות",["events"]],
+ ["w-setting","עריכת שולחן בחצר בערב","אינסטגרם, 3.11.2025",["winter","venue"]],
+ ["v-bar","הבר הארוך","תמונה שהמנהל שלח",["venue"]],
+ ["w-jazz","להקת ג'אז בקבלת הפנים","אינסטגרם, 2.11.2025",["winter","events"]],
+ ["e-asado","סיגר אסאדו, אחת ממנות קבלת הפנים","אינסטגרם, 24.10.2025",["food"]],
+ ["w-barnight","הבר בערב, באור כחול","אינסטגרם, 10.12.2025",["winter","venue"]],
+ ["g-gazebo2","הגזיבו בחצר בלילה, עם אדניות ושרשראות אור","סרטון שהמנהל שלח",["winter","venue"]],
+ ["v-caricature","ציירת קריקטורות בחצר","תמונה שהמנהל שלח",["events"]],
+ ["w-buffet","בופה בשרי","אינסטגרם, 5.11.2025",["winter","food"]],
+ ["e-batmitzvah2","פינת בלונים לבת מצווה","אינסטגרם, 24.10.2025",["events"]],
+ ["w-tables","שולחנות ערוכים מתחת לצמחייה","אינסטגרם, 16.11.2025",["winter","venue"]],
+ ["v-panipuri","פאני פורי, גם היא ברשימת קבלת הפנים","תמונה שהמנהל שלח",["food"]],
+ ["w-party","רחבה מלאה","אינסטגרם, 23.11.2025",["winter","events"]],
+ ["v-long","שולחן ארוך ערוך","תמונה שהמנהל שלח",["venue"]],
+ ["w-finger","פינגר פוד בוטיק","אינסטגרם, 26.11.2025",["winter","food"]],
+ ["w-newyear","הכניסה בערב סילבסטר","אינסטגרם, 10.1.2026",["winter","venue"]],
+ ["v-dining","אירוע צהריים בהושבה","תמונה שהמנהל שלח",["venue","events"]],
+ ["w-toast","הרמת כוסית","אינסטגרם, 10.12.2025",["winter","events"]],
+ ["e-buffet2","בופה סלטים","אינסטגרם, 15.11.2025",["winter","food"]],
+ ["v-ceiling","תקרת הצמחייה והשולחנות בצהריים","תמונה שהמנהל שלח",["venue"]],
+ ["g-gazebo-in","בתוך הגזיבו","סרטון שהמנהל שלח",["winter","venue"]],
+ ["v-yard","החלל הפתוח לחצר","תמונה שהמנהל שלח",["venue"]],
+ ["menu-upgrades","דף התוספות והשדרוגים של המקום","המקום שלח לנעמה",["food"]]
+];
+const gal=document.getElementById('gal');
+gal.innerHTML=PHOTOS.map(([f,cap,src,tags],i)=>`<figure data-tags="${tags.join(' ')}"><button type="button" data-i="${i}" aria-label="הגדלה: ${cap}"><img loading="lazy" src="img/${f}.jpg" alt="${cap}"></button><figcaption><span>${tags.includes('winter')?'<span class="tag-w">חורף</span>':''}${cap}</span><span class="src">${src}</span></figcaption></figure>`).join('');
+document.querySelectorAll('.filters .chip').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filters .chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  const f=b.dataset.f; gal.querySelectorAll('figure').forEach(fig=>fig.hidden=!(f==='all'||fig.dataset.tags.split(' ').includes(f)));
+}));
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap');
+gal.addEventListener('click',e=>{const b=e.target.closest('button[data-i]'); if(!b) return; const p=PHOTOS[+b.dataset.i]; lbImg.src=`img/${p[0]}.jpg`; lbImg.alt=p[1]; lbCap.textContent=`${p[1]} · ${p[2]}`; lb.hidden=false; document.getElementById('lbClose').focus();});
+const closeLb=()=>{lb.hidden=true};
+document.getElementById('lbClose').addEventListener('click',closeLb);
+lb.addEventListener('click',e=>{if(e.target===lb) closeLb()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeLb()});
+
+const fmt=n=>n.toLocaleString('he-IL')+' ₪';
+const $=id=>document.getElementById(id);
+function pickN(groupId,max,hintId,label,suffix){
+  const btns=[...document.querySelectorAll('#'+groupId+' button')];
+  const upd=()=>{const n=btns.filter(b=>b.getAttribute('aria-pressed')==='true').length; $(hintId).firstChild.textContent=`בחרתם ${n} מתוך ${max}.${suffix||''}`; return n};
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    const on=b.getAttribute('aria-pressed')==='true';
+    if(!on && btns.filter(x=>x.getAttribute('aria-pressed')==='true').length>=max) return;
+    b.setAttribute('aria-pressed',!on); upd(); calc();
+  }));
+  return ()=>btns.filter(b=>b.getAttribute('aria-pressed')==='true').map(b=>(b.querySelector('span')||b.firstChild).textContent.trim());
+}
+const recPicked=pickN('recChips',3,'recHint');
+const gamePicked=pickN('gameBtns',3,'gameHint',null,' בעמוד האינסטגרם שלהם מוצגות גם עמדות פלייסטיישן ומסכים (ראו בגלריה), אבל הן לא חלק מהחבילה הזו והמחיר שלהן לא נאמר.');
+function calc(){
+  const a=Math.max(0,parseInt($('adults').value)||0), k=Math.max(0,parseInt($('kids').value)||0);
+  const billed=Math.max(a,50);
+  let total=billed*320+k*150;
+  $('lAdults').textContent=a<50?`${a} מבוגרים (מחויב מינימום 50) × 320`:`${a} מבוגרים × 320`;
+  $('vAdults').textContent=fmt(billed*320);
+  $('lKids').textContent=`${k} ילדים × 150`; $('vKids').textContent=fmt(k*150);
+  const rec=$('rec').checked, meat=$('meat').checked, games=$('games').checked;
+  $('rRec').hidden=!rec; $('rMeat').hidden=!meat; $('rGames').hidden=!games;
+  $('o-rec').classList.toggle('on',rec); $('o-meat').classList.toggle('on',meat); $('o-games').classList.toggle('on',games);
+  if(rec){ const r=recPicked(); $('lRec').textContent=`קבלת פנים, ${billed} × 35`+(r.length?` (${r.join(', ')})`:''); $('vRec').textContent=fmt(billed*35); total+=billed*35 }
+  if(meat){ $('lMeat').textContent=`עמדת נתחים, ${billed} × 40`; $('vMeat').textContent=fmt(billed*40); total+=billed*40 }
+  if(games){ total+=1770 }
+  const pct=parseInt($('tip').value)||0, adultTip=Math.round(320*pct/100), kidTip=Math.round(150*pct/100), tip=billed*adultTip+k*kidTip;
+  $('tipPct').textContent=pct+'%'; $('rTip').hidden=pct===0; $('o-tip').classList.toggle('on',pct>0);
+  document.querySelectorAll('[data-tip]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.tip===pct));
+  $('tipHint').textContent=pct?`${adultTip} ₪ לכל מבוגר ו-${kidTip} ₪ לכל ילד, סה"כ ${fmt(tip)}. משולם בנפרד, בדרך כלל במזומן לצוות.`:'בלי טיפ';
+  if(pct){ $('lTip').textContent=`טיפ ${pct}% (${adultTip} ₪ למבוגר, ${kidTip} ₪ לילד)`; $('vTip').textContent=fmt(tip); total+=tip }
+  $('vTotal').textContent=fmt(total);
+}
+['adults','kids'].forEach(id=>$(id).addEventListener('input',calc));
+['rec','meat','games'].forEach(id=>$(id).addEventListener('change',calc));
+$('tip').addEventListener('input',calc);
+document.querySelectorAll('[data-tip]').forEach(b=>b.addEventListener('click',()=>{$('tip').value=b.dataset.tip; calc()}));
+calc();
+</script>
+</body>
+</html>
